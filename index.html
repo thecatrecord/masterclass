@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trust Intelligence for HR Leaders — Steve Wee</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #ffffff;
+    --off: #f8f7f4;
+    --ink: #1a1a2e;
+    --navy: #16213e;
+    --teal: #0f6b6b;
+    --teal-light: #1a9b9b;
+    --teal-pale: #e8f4f4;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+  }
+
+  body {
+    background: var(--white);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--teal);
+    padding: 10px 40px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.04em;
+  }
+
+  .topbar strong { color: white; font-weight: 500; }
+
+  /* NAV */
+  nav {
+    padding: 20px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  .nav-badge {
+    background: var(--teal-pale);
+    color: var(--teal);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 40px;
+    letter-spacing: 0.04em;
+  }
+
+  /* HERO — two column */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 0;
+    min-height: 88vh;
+    align-items: stretch;
+  }
+
+  .hero-left {
+    padding: 70px 70px 70px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--off);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 28px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--teal);
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  /* PROOF STRIP */
+  .proof-strip {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .proof-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .proof-num {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--teal);
+    line-height: 1;
+  }
+
+  .proof-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* FORM PANEL */
+  .hero-right {
+    background: var(--ink);
+    padding: 60px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: white;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .form-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  .form-row {
+    margin-bottom: 16px;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 7px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 4px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  select option { background: var(--ink); color: white; }
+  input::placeholder { color: rgba(255,255,255,0.22); }
+  input:focus, select:focus { border-color: var(--teal-light); }
+
+  .cta-btn {
+    width: 100%;
+    padding: 15px;
+    background: var(--teal);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+
+  .cta-btn:hover { background: var(--teal-light); }
+
+  .form-footer {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    text-align: center;
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  /* WHO THIS IS FOR */
+  .for-section {
+    padding: 80px 80px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .for-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .for-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 20px;
+  }
+
+  .for-section p {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .audience-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .audience-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .check {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    background: var(--teal-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .check svg { width: 11px; height: 11px; }
+
+  /* WHAT YOU'LL LEARN */
+  .learn {
+    padding: 80px;
+    background: var(--off);
+  }
+
+  .learn-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .learn h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 48px;
+    max-width: 560px;
+  }
+
+  .learn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .learn-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px 28px 32px;
+    border-top: 3px solid var(--teal);
+  }
+
+  .learn-num {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--teal-pale);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .learn-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .learn-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* SPEAKER */
+  .speaker-section {
+    padding: 80px;
+    background: white;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .speaker-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+  }
+
+  .speaker-avatar {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--ink) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-size: 40px;
+    color: white;
+    font-weight: 700;
+  }
+
+  .speaker-info .role {
+    font-size: 13px;
+    color: var(--teal);
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .speaker-info h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .speaker-info p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  /* BOTTOM CTA */
+  .bottom-cta {
+    background: var(--navy);
+    padding: 80px 40px;
+    text-align: center;
+  }
+
+  .bottom-cta .section-label { color: var(--teal-light); margin-bottom: 16px; }
+
+  .bottom-cta h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  .bottom-cta p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 40px;
+  }
+
+  .bottom-form {
+    max-width: 440px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  footer {
+    padding: 24px 60px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    background: var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 48px 32px; }
+    .hero-right { padding: 48px 32px; }
+    .for-inner { grid-template-columns: 1fr; gap: 32px; }
+    .learn-grid { grid-template-columns: 1fr; }
+    .learn, .for-section, .speaker-section { padding: 48px 32px; }
+    nav { padding: 16px 24px; }
+    .speaker-inner { flex-direction: column; gap: 24px; }
+    footer { padding: 20px 24px; flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <strong>Free Live Session</strong> — Limited to corporate HR professionals and people leaders
+</div>
+
+<nav>
+  <div class="nav-logo">Daily CMO</div>
+  <div class="nav-badge">HR & People Leaders Edition</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Live Session with Steve Wee</div>
+    <h1>Your People Have the Right Conversations.<br><em>But the Wrong Outcomes.</em></h1>
+    <p class="hero-sub">Discover why high-potential employees, managers, and leaders lose trust in conversations — and the neuroscience framework that fixes it.</p>
+
+    <div class="proof-strip">
+      <div class="proof-item">
+        <div class="proof-num">500+</div>
+        <div class="proof-label">Talks delivered</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">1M+</div>
+        <div class="proof-label">Professionals reached across Asia</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">24 yrs</div>
+        <div class="proof-label">In communication & trust research</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="form-title">Reserve Your Seat</div>
+    <div class="form-sub">Free for HR professionals and people leaders. Fill in your details below.</div>
+    <iframe data-tally-src="https://tally.so/embed/EkBY2l?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Reserve Your Seat"></iframe>
+    <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s);}</script>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section class="for-section">
+  <div class="for-inner">
+    <div>
+      <div class="section-label">Who this session is for</div>
+      <h2>Built for the people who build people.</h2>
+      <p>If you manage talent, run L&D programmes, or lead teams — you already know that skills alone don't determine who succeeds.</p>
+      <p>Trust does. And most organisations have no system for it.</p>
+    </div>
+    <ul class="audience-list">
+      <li>
+        <div class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f6b6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        HR Directors and CHROs looking to improve how teams connect
+      </li>
+      <li>
+        <div class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f6b6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        L&D managers seeking practical communication frameworks
+      </li>
+      <li>
+        <div class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f6b6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        People leaders responsible for culture and performance
+      </li>
+      <li>
+        <div class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f6b6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        Leaders who want to improve how their teams influence and collaborate
+      </li>
+      <li>
+        <div class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#0f6b6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        Anyone exploring Trust Intelligence as a training programme for their organisation
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHAT YOU'LL LEARN -->
+<section class="learn">
+  <div class="learn-inner">
+    <div class="section-label">Session breakdown</div>
+    <h2>What your leaders will take back to the office on Monday.</h2>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <div class="learn-num">01</div>
+        <h3>Why trust breaks down in the workplace</h3>
+        <p>The invisible patterns behind failed collaborations, stalled negotiations, and disengaged employees — and what's actually causing them.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-num">02</div>
+        <h3>The V.I.T.A.L Trust Framework</h3>
+        <p>A diagnostic model your leaders can use immediately to identify where trust is being lost in any conversation, meeting, or working relationship.</p>
+      </div>
+      <div class="learn-card">
+        <div class="learn-num">03</div>
+        <h3>Neuroscience of workplace trust</h3>
+        <p>What's happening in the brain during high-stakes conversations — and the small shifts that move people from resistance to buy-in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKER -->
+<section class="speaker-section">
+  <div class="speaker-inner">
+    <div class="speaker-avatar">S</div>
+    <div class="speaker-info">
+      <div class="role">Creator of Trust Intelligence (TQ) · Founder, High Flyer Asia</div>
+      <h3>Steve Wee</h3>
+      <p>For the last 24 years, Steve has built his career and entire network through one thing — communication. Starting as a flight attendant with Singapore Airlines, he spent years learning to read people, earn trust fast, and handle difficult interactions under pressure.</p>
+      <p>He moved into personal branding and spent the next decade helping leaders and CEOs sharpen how they sell, connect, and influence. After observing thousands of conversations, he built the Trust Intelligence framework — now used by professionals across Asia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <div class="section-label">Free live session</div>
+  <h2>Build a culture where trust is a skill, not an assumption.</h2>
+  <p>Reserve your seat below. This session is free and will not be recorded.</p>
+  <div class="bottom-form">
+    <iframe data-tally-src="https://tally.so/embed/EkBY2l?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0" title="Reserve Your Seat"></iframe>
+  </div>
+</section>
+
+<footer>
+  <p>© Daily CMO · dailycmo.net</p>
+  <p>A Daily CMO Event</p>
+</footer>
+
+</body>
+</html>
